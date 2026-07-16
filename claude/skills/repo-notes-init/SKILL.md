@@ -17,7 +17,8 @@ globally via `~/.config/git/ignore` so it never appears in `git status`.
 ${CLAUDE_PROJECT_DIR}/.repo-notes/
 ├── README.md      # index
 ├── reviews/       # PR review notes
-└── architecture/  # 構造と振る舞いの概要
+├── architecture/  # 構造と振る舞いの概要
+└── study/         # 技術・ライブラリ・コードベースの深掘り調査ノート
 ```
 
 ## Rules
@@ -33,7 +34,7 @@ set -euo pipefail
 NOTES_DIR="${CLAUDE_PROJECT_DIR}/.repo-notes"
 REPO_NAME="$(basename "${CLAUDE_PROJECT_DIR}")"
 
-mkdir -p "$NOTES_DIR/reviews" "$NOTES_DIR/architecture"
+mkdir -p "$NOTES_DIR/reviews" "$NOTES_DIR/architecture" "$NOTES_DIR/study"
 
 if [ ! -e "$NOTES_DIR/README.md" ]; then
   cat > "$NOTES_DIR/README.md" <<EOF
@@ -44,6 +45,7 @@ if [ ! -e "$NOTES_DIR/README.md" ]; then
 ## 索引
 - \`reviews/\` … PRレビューのメモ
 - \`architecture/\` … 構造と振る舞いの概要
+- \`study/\` … 技術・ライブラリ・コードベースの深掘り調査ノート（日付ごと）
 
 ## このrepoの一言まとめ
 （このリポジトリが何をするものか、入口はどこかを1〜2行で）

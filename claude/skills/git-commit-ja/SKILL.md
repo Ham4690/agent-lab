@@ -64,7 +64,7 @@ Check these aspects:
 | Aspect | Example |
 |--------|---------|
 | Prefix convention | `feat:` `fix:` (Conventional Commits), `【fix】` style, or no prefix |
-| Language | Japanese, English, or mixed |
+| Language | Japanese, English, or mixed — observed for context only. Regardless of the log's language, this skill ALWAYS writes the commit message in Japanese (see step 4) |
 | Tone | "~する" (do), "~しました" (formal past), or command form ("Add xxx") |
 | Actual granularity | File count and line count per commit tendency (via `git log --stat`) |
 | Body presence | Title-only or with bullet-point body explanation |
@@ -98,24 +98,28 @@ Categorize changes:
 
 ### 4. Create commit message
 
+**Language (non-negotiable):**
+- Title and body are ALWAYS written in concise Japanese, even if the past log is in English. This overrides the "follow repo conventions" rule of step 2 — conventions apply to prefix, tone, and granularity only, never to language.
+- The Conventional Commits prefix (`feat:`, `fix(scope):`, etc.) stays in English. Technical terms, product names, and identifiers may remain in ASCII (e.g. `Bearer トークン検証を preemptive 認証に変更`).
+
 **Title line:**
 - Aim for ~50 chars; focus on "why/what changes" not "what was changed"
 - If past log has prefix convention, follow it. Otherwise use Default Policy below.
 - Keep tone consistent: "~する" or command form (match past log style)
 
 **Body (if needed):**
-- Multiple files/intents, or "why" is not obvious from diff alone → add bullet-point explanation
+- Multiple files/intents, or "why" is not obvious from diff alone → add bullet-point explanation in Japanese
 - Simple single-line changes → no body (avoid over-verbosity)
 
 ### Default Policy (when repo has no clear convention)
 
-Base on Conventional Commits format, title in English:
+Base on Conventional Commits format, description in Japanese:
 
 ```
-<type>(<scope>): <concise description of change>
+<type>(<scope>): <変更内容の簡潔な日本語の説明>
 
-- <note 1>
-- <note 2>
+- <補足 1（日本語）>
+- <補足 2（日本語）>
 ```
 
 - `<type>`: feat / fix / refactor / style / test / docs / chore
@@ -135,7 +139,7 @@ Output nothing if all clear; proceed to step 6. Only if issues found, do NOT com
 ### 6. Execute commit and show result only
 
 - Execute `git commit` with the created message; no confirmation needed
-- Output to conversation: **commit hash and title line only** in ~1 line (e.g., `Committed a1b2c3d: feat(auth): Switch bearer token validation to preemptive auth`). No proposal text, no review results, no confirmation questions.
+- Output to conversation: **commit hash and title line only** in ~1 line (e.g., `Committed a1b2c3d: feat(auth): Bearer トークン検証を preemptive 認証に変更`). No proposal text, no review results, no confirmation questions.
 - If step 3 proposed splitting, re-stage via `git add -p` for the relevant parts, then commit each; show results ~1 line per commit.
 - Do NOT `git push` unless explicitly instructed (push is `git-push-ja` skill's responsibility).
 

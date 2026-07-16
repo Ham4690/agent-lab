@@ -5,5 +5,6 @@ Configurations, skills, and experiments for AI agents & coding assistants
 
 ```bash
 # ex: setup summarize-changes skill
-ln -s "$HOME/workspace/agent-lab/claude/skills/summarize-changes" "$HOME/.claude/skills/summarize-changes"
+SKILL_NAME="summarize-changes"
+ln -s "$HOME/workspace/agent-lab/claude/skills/$SKILL_NAME" "$HOME/.claude/skills/$SKILL_NAME"
 ```

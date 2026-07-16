@@ -1,12 +1,12 @@
 ---
 name: pr-review-ja
-description: Review a GitHub Pull Request (read-only) and write findings to a Markdown file under docs/my-review/. Checks bugs, security, performance, design, and tests (TDD perspective) in a fixed order, and outputs missing test cases as given/when/then specs. Use whenever the user asks to review a PR, e.g. "PRレビューして", "PRをレビュー", "コードレビューして", "PR確認して", "プルリクエストを見て", "review this PR", "レビュー #<number>", or pastes a GitHub PR URL asking for review. Never posts comments to GitHub and never modifies code.
+description: Review a GitHub Pull Request (read-only) and write findings to a Markdown file under `${CLAUDE_PROJECT_DIR}/docs/my-review/`. Checks bugs, security, performance, design, and tests (TDD perspective) in a fixed order, and outputs missing test cases as given/when/then specs. Use whenever the user asks to review a PR, e.g. "PRレビューして", "PRをレビュー", "コードレビューして", "PR確認して", "プルリクエストを見て", "review this PR", "レビュー #<number>", or pastes a GitHub PR URL asking for review. Never posts comments to GitHub and never modifies code.
 allowed-tools: Bash(gh pr view *) Bash(gh pr checkout *) Bash(gh pr diff *) Bash(gh auth status) Bash(gh repo view *) Bash(git status *) Bash(git log *) Bash(git diff *) Bash(git rev-parse *) Bash(git checkout *) Bash(git switch *) Bash(rg *) Bash(date *) Bash(mkdir -p docs/my-review) Read Grep Glob Write
 ---
 
 # pr-review-ja
 
-Read-only PR review skill. Reviews a GitHub Pull Request against a fixed checklist and writes the findings as a Japanese Markdown report under `docs/my-review/` in the reviewed repository. It never changes code, never comments on GitHub, and never approves/merges anything.
+Read-only PR review skill. Reviews a GitHub Pull Request against a fixed checklist and writes the findings as a Japanese Markdown report under `${CLAUDE_PROJECT_DIR}/docs/my-review/` in the reviewed repository. It never changes code, never comments on GitHub, and never approves/merges anything.
 
 **Language policy**: This document is in English, but ALL interaction with the user (questions, warnings, progress, final summary) MUST be in Japanese, and the output `*.md` report MUST be written in Japanese.
 
@@ -14,7 +14,7 @@ Read-only PR review skill. Reviews a GitHub Pull Request against a fixed checkli
 
 - NEVER modify, commit, push, amend, or rebase anything in the reviewed repository.
 - NEVER approve, merge, close, or post comments/reviews to GitHub (`gh pr review`, `gh pr comment`, `gh pr merge` are all forbidden).
-- The ONLY allowed writes are: creating `docs/my-review/` (if absent) and writing the review report file into it.
+- The ONLY allowed writes are: creating `${CLAUDE_PROJECT_DIR}/docs/my-review/` (if absent) and writing the review report file into it.
 - The ONLY allowed branch operation is `gh pr checkout <number>` plus switching back to the original branch afterwards.
 - Missing tests are reported as *specifications only*. Implementing tests is the responsibility of a separate skill (`pr-test-fill-ja`), not this one.
 
@@ -77,7 +77,7 @@ Check the following perspectives **in this exact order**. For any perspective wi
 
 ### 5. Write the report
 
-- Output directory: `docs/my-review/` at the root of the **reviewed repository** (create it if it does not exist).
+- Output directory: `${CLAUDE_PROJECT_DIR}/docs/my-review/` at the root of the **reviewed repository** (create it if it does not exist).
 - Filename: `pr<number>_<yyyymmdd>_<slug>.md`
   - `<number>`: PR number digits only (`#6` → `pr6`)
   - `<yyyymmdd>`: the date the review is executed (use `date +%Y%m%d`)

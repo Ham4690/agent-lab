@@ -5,8 +5,14 @@ Configurations, skills, and experiments for AI agents & coding assistants
 
 全スキルを `~/.claude/skills/` にシンボリックリンク登録。既存 link は skip、新規 skill は自動追加。
 
+スクリプト自身の位置から skill ソースを解決 → clone 先・実行 cwd 問わず動作。
+
 ```bash
-bash ~/workspace/agent-lab/claude/scripts/setup-skills.sh
+# repo root から
+bash claude/scripts/setup-skills.sh
+
+# 任意の場所から（パス指定すればどこでも可）
+bash /path/to/agent-lab/claude/scripts/setup-skills.sh
 ```
 
 動作：

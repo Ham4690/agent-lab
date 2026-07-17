@@ -1,7 +1,18 @@
 #!/bin/bash
 set -euo pipefail
 
-SKILLS_SRC="$HOME/workspace/agent-lab/claude/skills"
+# Resolve this script's directory, following symlinks, so it works from any
+# clone location or working directory.
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do
+  DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ "$SOURCE" != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+SCRIPT_DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+
+# scripts/ -> claude/ -> claude/skills
+SKILLS_SRC="$(cd "$SCRIPT_DIR/../skills" && pwd)"
 SKILLS_LINK="$HOME/.claude/skills"
 
 mkdir -p "$SKILLS_LINK"

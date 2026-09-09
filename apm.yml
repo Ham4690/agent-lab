@@ -1,0 +1,12 @@
+name: agent-lab
+version: 1.0.0
+description: Configurations, skills, and experiments for AI agents & coding assistants
+author: Ham4690
+targets:
+  - claude
+  - codex
+dependencies:
+  apm: []
+  mcp: []
+includes: auto
+scripts: {}

@@ -1,0 +1,7 @@
+# apm (https://github.com/microsoft/apm) generated artifacts
+apm_modules/
+.claude/
+.codex/
+.agents/
+AGENTS.md
+CLAUDE.md

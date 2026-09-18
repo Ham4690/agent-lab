@@ -2,10 +2,10 @@
 name: repo-notes-init
 description: >-
   Scaffold a personal, git-ignored `.repo-notes/` folder for a repository (a
-  reviews/ subfolder + a README index). Use this whenever the user wants a
-  private, non-committed notes space for understanding a repo, asks to "create
-  a repo-notes folder" / "set up notes for this repo", or mentions
-  `.repo-notes`. Trigger even if they don't say "skill".
+  reviews/ subfolder + a README index). Use this ONLY when the user explicitly
+  asks to use it by name, or explicitly asks to "create a repo-notes folder" /
+  "set up notes for this repo". Do NOT trigger just because `.repo-notes` is
+  mentioned in passing.
 ---
 
 # repo-notes-init

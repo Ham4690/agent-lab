@@ -1,6 +1,6 @@
 ---
 name: tech-study-notes
-description: Investigate and deeply understand the inner workings and overall structure of a specific technology, library, framework, or codebase, and capture it as a structured Japanese study note under `.repo-notes/study/`. Use this skill whenever the user wants to understand how something works, grasp an architecture or processing flow, or read through a specific class/module — e.g. "how does build.gradle.kts work", "explain Go's fmt library", "walk me through the BudgetControlService class", "lay out the entry point and trigger of this system". Trigger it even when the user does not explicitly say "use the skill". Applies equally to OSS libraries, frameworks, language standard libraries, and in-house codebases.
+description: Investigate and deeply understand the inner workings and overall structure of a specific technology, library, framework, or codebase, and capture it as a structured Japanese study note under `.repo-notes/study/`. Use this skill ONLY when the user explicitly asks to use it by name (e.g. "tech-study-notesを使って"), or explicitly asks to write/save a study note. Do NOT trigger automatically just from a general technical question like "how does X work" — answer those directly instead. Applies equally to OSS libraries, frameworks, language standard libraries, and in-house codebases.
 ---
 
 # tech-study-notes 📘
@@ -15,11 +15,7 @@ Investigate a technical topic (a library, a framework, a specific codebase, or a
 
 ## When to use
 
-Trigger on inputs such as:
-
-- Understanding a mechanism: e.g. "how does gradle's `build.gradle.kts` work", "the internals of Go's `fmt` library"
-- A specific class/module in a repository: e.g. "read through `BudgetControlService` in this repo"
-- Grasping an architecture or processing flow: e.g. "lay out the overall structure of X"
+Only invoke this skill when the user explicitly requests it — either by naming the skill directly, or by explicitly asking to produce/save a study note (e.g. "study noteにまとめて", "調査ノートを作って"). A plain technical question ("how does gradle's `build.gradle.kts` work", "the internals of Go's `fmt` library") should be answered directly in chat, not turned into a note unless asked.
 
 ## Output location & file naming 📂
 
